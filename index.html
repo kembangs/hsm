@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Google Drive Popup</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 80px; }
+    .popup {
+      display: none;
+      position: fixed;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+<h2>Kembang playlist!!</h2>
+
+<div id="overlay"></div>
+
+<div class="popup" id="popup">
+  <h3>📂 Link Google Drive</h3>
+  <p><a href="https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing" target="_blank">Klik di sini untuk membuka Google Drive</a></p>
+</div>
+
+<script>
+  window.onload = function() {
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("popup").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
