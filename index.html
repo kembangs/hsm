@@ -4,41 +4,86 @@
   <meta charset="UTF-8">
   <title>Google Drive Popup</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 80px; }
-    .popup {
-      display: none;
-      position: fixed;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      background: #ffe4ec; /* pink lembut */
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
+
+    body {
+      background: #fff;
+      padding-top: 80px;
+    }
+
+    /* Overlay (latar belakang yang menutupi layar) */
     #overlay {
       display: none;
       position: fixed;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
+      top: 0; right: 0; bottom: 0; left: 0; /* pastikan menutupi seluruh layar */
       background-color: rgba(255, 192, 203, 0.5); /* pink lembut */
+      z-index: 999; /* di bawah popup tapi di atas konten lain */
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffe4ec; /* pink lembut untuk kotak popup */
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 1000; /* pastikan popup di atas overlay */
+      min-width: 260px;
+    }
+
+    /* Tombol tutup kecil */
+    .close-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.08);
     }
   </style>
 </head>
 <body>
 
 <h2>Kembang playlist!!</h2>
+<p>Selamat datang — klik link di popup untuk buka Google Drive.</p>
 
 <div id="overlay"></div>
 
 <div class="popup" id="popup">
   <h3>Hit the music</h3>
-  <p><a href="https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing" target="_blank">Click here</a></p>
+  <p>
+    <a href="https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing" target="_blank">
+      Click here
+    </a>
+  </p>
+  <a class="close-btn" id="closeBtn">Tutup</a>
 </div>
 
 <script>
-  window.onload = function() {
+  // Tampilkan popup + overlay saat halaman selesai dimuat
+  window.addEventListener('load', function() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("popup").style.display = "block";
+  });
+
+  // Tutup popup jika klik overlay atau tombol tutup
+  document.getElementById('overlay').addEventListener('click', hidePopup);
+  document.getElementById('closeBtn').addEventListener('click', hidePopup);
+
+  function hidePopup() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("popup").style.display = "none";
   }
 </script>
 
