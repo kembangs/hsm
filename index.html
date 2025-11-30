@@ -20,9 +20,9 @@
     #overlay {
       display: none;
       position: fixed;
-      top: 0; right: 0; bottom: 0; left: 0; /* pastikan menutupi seluruh layar */
+      top: 0; right: 0; bottom: 0; left: 0;
       background-color: rgba(255, 192, 203, 0.5); /* pink lembut */
-      z-index: 999; /* di bawah popup tapi di atas konten lain */
+      z-index: 999;
     }
 
     /* Popup */
@@ -32,14 +32,13 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: #ffe4ec; /* pink lembut untuk kotak popup */
+      background: #ffe4ec; /* pink lembut */
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      z-index: 1000; /* pastikan popup di atas overlay */
+      z-index: 1000;
       min-width: 260px;
     }
-
   </style>
 </head>
 <body>
@@ -52,10 +51,9 @@
   <h3>Playlist ngantuk kerja</h3>
   <p>
     <a href="https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing" target="_blank">
-    https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing
+      https://drive.google.com/drive/folders/1xAMyYGtq5u2L266B13CCVcyjGvDPIo0Z?usp=sharing
     </a>
   </p>
-  <a class="close-btn" id="closeBtn">Tutup</a>
 </div>
 
 <script>
@@ -65,14 +63,11 @@
     document.getElementById("popup").style.display = "block";
   });
 
-  // Tutup popup jika klik overlay atau tombol tutup
-  document.getElementById('overlay').addEventListener('click', hidePopup);
-  document.getElementById('closeBtn').addEventListener('click', hidePopup);
-
-  function hidePopup() {
+  // Klik overlay untuk menutup popup
+  document.getElementById('overlay').addEventListener('click', function() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("popup").style.display = "none";
-  }
+  });
 </script>
 
 </body>
