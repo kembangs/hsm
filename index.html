@@ -16,12 +16,12 @@
       padding-top: 80px;
     }
 
-    /* Overlay (latar belakang yang menutupi layar) */
+    /* Overlay */
     #overlay {
       display: none;
       position: fixed;
       top: 0; right: 0; bottom: 0; left: 0;
-      background-color: rgba(255, 192, 203, 0.5); /* pink lembut */
+      background-color: rgba(255, 192, 203, 0.5); /* pink */
       z-index: 999;
     }
 
@@ -57,14 +57,14 @@
 </div>
 
 <script>
-  // Tampilkan popup + overlay saat halaman selesai dimuat
+  // Munculkan popup saat halaman load
   window.addEventListener('load', function() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("popup").style.display = "block";
   });
 
-  // Klik overlay untuk menutup popup
-  document.getElementById('overlay').addEventListener('click', function() {
+  // Tutup popup jika klik overlay
+  document.getElementById("overlay").addEventListener('click', function() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("popup").style.display = "none";
   });
